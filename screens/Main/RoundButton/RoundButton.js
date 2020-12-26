@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import * as Icon from "react-native-feather";
 import styles from "../../../styles";
 
 const RoundButton = styled.TouchableOpacity`
@@ -10,16 +11,14 @@ const RoundButton = styled.TouchableOpacity`
   padding: ${styles["spacing-3"]} ${styles["spacing-5"]};
 `;
 
-const Text = styled.Text`
-  text-align: center;
+const PlayIcon = styled(Icon.Play)`
   color: white;
-  font-size: ${styles["font-sizing-3"]};
 `;
 
 const RoundButtonWrapper = ({ title, ...rest }) => {
   return (
     <RoundButton {...rest}>
-      <Text>{title}</Text>
+      <PlayIcon />
     </RoundButton>
   );
 };
