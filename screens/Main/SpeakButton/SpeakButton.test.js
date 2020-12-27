@@ -1,10 +1,10 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
-import RoundButton from "./RoundButton";
+import SpeakButton from "./SpeakButton";
 
-describe("<RoundButton />", () => {
+describe("<SpeakButton />", () => {
   it("should render", () => {
-    const { getByText } = render(<RoundButton title="speak" />);
+    const { getByText } = render(<SpeakButton title="speak" />);
 
     expect(getByText("speak")).toBeTruthy();
   });
@@ -12,7 +12,7 @@ describe("<RoundButton />", () => {
   it("should call function when pressed", () => {
     const mockedFunction = jest.fn();
     const { getByText } = render(
-      <RoundButton title="speak" onPress={mockedFunction} />
+      <SpeakButton title="speak" onPress={mockedFunction} />
     );
 
     const button = getByText("speak");

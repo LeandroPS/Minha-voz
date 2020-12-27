@@ -3,24 +3,28 @@ import styled from "styled-components/native";
 import * as Icon from "react-native-feather";
 import styles from "../../../styles";
 
-const RoundButton = styled.TouchableOpacity`
+const SpeakButton = styled.TouchableOpacity`
   background: red;
   color: white;
-  text-align: center;
-  align-self: flex-start;
+  justify-content: center;
+  align-items: center;
   padding: ${styles["spacing-3"]} ${styles["spacing-5"]};
+  width: 200px;
+  height: 60px;
+  border-radius: 40px;
 `;
 
 const PlayIcon = styled(Icon.Play)`
   color: white;
+  text-align: center;
 `;
 
-const RoundButtonWrapper = ({ title, ...rest }) => {
+const SpeakButtonWrapper = ({ title, ...rest }) => {
   return (
-    <RoundButton {...rest}>
+    <SpeakButton {...rest}>
       <PlayIcon />
-    </RoundButton>
+    </SpeakButton>
   );
 };
 
-export default RoundButtonWrapper;
+export default SpeakButtonWrapper;

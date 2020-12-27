@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import SpeechField from "./SpeechField";
-import RoundButton from "./RoundButton";
+import SpeakButton from "./SpeakButton";
 import FloatingContainer from "./FloatingContainer";
 import fetchAudio from "../../services/fetchAudio";
 import playBase64URIAudio from "../../utils/playBase64URIAudio";
-import { Button } from "react-native";
 
 import Container from "../../components/Container";
 
@@ -24,13 +23,8 @@ const Main = ({ navigation }) => {
   return (
     <Container>
       <SpeechField value={speech} onChangeText={setSpeech} />
-
-      <Button
-        title="Settings"
-        onPress={() => navigation.navigate("Settings")}
-      />
       <FloatingContainer>
-        <RoundButton title="Speak" onPress={() => handleSpeech()} />
+        <SpeakButton title="Speak" onPress={() => handleSpeech()} />
       </FloatingContainer>
     </Container>
   );
