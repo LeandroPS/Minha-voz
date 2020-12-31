@@ -2,13 +2,14 @@ import styled from "styled-components/native";
 import styles from "../../../styles";
 
 const SpeechField = styled.TextInput`
-  padding: ${styles["spacing-4"]};
-  font-size: ${styles["font-sizing-3"]};
+  padding: 0 ${styles["spacing-4"]} ${styles["spacing-4"]};
+  margin-bottom: 20px;
+  font-size: ${styles["font-sizing-4"]};
 `;
 
 SpeechField.defaultProps = {
   multiline: true,
-  placeholder: "Digite seu texto aqui e depois clique no botão 'falar'",
+  placeholder: "Digite seu texto aqui e depois clique no botão 'play'",
 };
 
 export default SpeechField;
