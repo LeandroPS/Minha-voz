@@ -13,7 +13,6 @@ const KeyboardAvoidingView = styled.KeyboardAvoidingView`
 
 const StyledSafeAreaView = styled(SafeAreaView)`
   flex: 1;
-  background-color: green;
 `;
 
 const Container = ({ children }) => (
