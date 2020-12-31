@@ -4,10 +4,11 @@ import * as Icon from "react-native-feather";
 import styles from "../../../styles";
 
 const SpeakButton = styled.TouchableOpacity`
-  background: red;
+  background: ${styles["color-primary"]};
   color: white;
   justify-content: center;
   align-items: center;
+  align-self: center;
   padding: ${styles["spacing-3"]} ${styles["spacing-5"]};
   width: 200px;
   height: 60px;
