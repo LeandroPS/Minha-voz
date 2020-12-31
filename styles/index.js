@@ -6,7 +6,9 @@ export default {
   "spacing-5": "32px",
   "spacing-6": "52px",
   "font-sizing-1": "8px",
-  "font-sizing-2": "16px",
-  "font-sizing-3": "24px",
-  "font-sizing-4": "32px",
+  "font-sizing-2": "12px",
+  "font-sizing-3": "20px",
+  "font-sizing-4": "28px",
+  "color-text": "#424242",
+  "color-primary": "#F44336",
 };
