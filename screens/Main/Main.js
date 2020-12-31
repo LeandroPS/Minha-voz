@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import SpeechField from "./SpeechField";
 import SpeakButton from "./SpeakButton";
+import DeleteButton from "./DeleteButton";
 import FloatingContainer from "./FloatingContainer";
 import fetchAudio from "../../services/fetchAudio";
 import playBase64URIAudio from "../../utils/playBase64URIAudio";
 
 import Container from "../../components/Container";
 
-const Main = ({ navigation }) => {
+const Main = () => {
   const [speech, setSpeech] = useState("");
 
   const handleSpeech = async () => {
@@ -22,10 +23,11 @@ const Main = ({ navigation }) => {
 
   return (
     <Container>
-      <SpeechField value={speech} onChangeText={setSpeech} />
-      <FloatingContainer>
-        <SpeakButton title="Speak" onPress={() => handleSpeech()} />
-      </FloatingContainer>
+      <SpeechField defaultValue={speech} onChangeText={setSpeech} />
+      <FloatingContainer
+        center={<SpeakButton onPress={() => handleSpeech()} />}
+        right={<DeleteButton onPress={() => setSpeech("")} />}
+      />
     </Container>
   );
 };
