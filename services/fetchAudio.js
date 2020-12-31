@@ -4,10 +4,16 @@ import convertBlobToBase64 from "../utils/convertBlobToBase64";
 
 const fetchAudio = async (text) => {
   try {
-    const { data } = await axios.get(`${config.APIUrl}/v1/synthesize`, {
+    const { data } = await axios({
+      method: "post",
+      url: `${config.APIUrl}/v1/synthesize`,
       params: {
-        text,
         voice: "pt-BR_IsabelaVoice",
+      },
+      data: {
+        text,
+      },
+      headers: {
         accept: "audio/mp3",
       },
       auth: {
@@ -19,7 +25,7 @@ const fetchAudio = async (text) => {
 
     return await convertBlobToBase64(data);
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
   }
 };
 
