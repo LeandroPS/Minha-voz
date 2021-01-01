@@ -7,7 +7,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import HeaderLogo from "./components/HeaderLogo";
 import Main from "./screens/Main";
 import Settings from "./screens/Settings";
-import styles from "./styles";
 
 if (!global.btoa) {
   global.btoa = encode;
@@ -38,7 +37,3 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
-
-// export default function App() {
-//   return <Main />;
-// }
