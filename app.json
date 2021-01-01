@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MyVoice",
+    "name": "Minha Voz",
     "slug": "MyVoice",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -26,7 +26,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
