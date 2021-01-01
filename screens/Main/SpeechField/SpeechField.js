@@ -5,6 +5,7 @@ const SpeechField = styled.TextInput`
   padding: 0 ${styles["spacing-4"]} ${styles["spacing-4"]};
   margin-bottom: 20px;
   font-size: ${styles["font-sizing-4"]};
+  flex: 1;
 `;
 
 SpeechField.defaultProps = {
