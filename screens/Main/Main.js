@@ -34,8 +34,6 @@ const Main = () => {
   };
 
   const goBackInHistory = () => {
-    console.log("going back", historyPosition);
-
     const position = historyPosition + 1;
 
     if (Boolean(history[position])) {
@@ -49,7 +47,6 @@ const Main = () => {
   };
 
   const goForwardInHistory = () => {
-    console.log("going forward");
     const position = historyPosition - 1;
 
     if (Boolean(history[position])) {
