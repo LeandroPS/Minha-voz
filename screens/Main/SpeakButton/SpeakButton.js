@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/native";
 import * as Icon from "react-native-feather";
 import styles from "../../../styles";
+import ActivityIndicator from "../../../components/ActivityIndicator";
 
 const SpeakButton = styled.TouchableOpacity`
   background: ${styles["color-primary"]};
@@ -20,10 +21,10 @@ const PlayIcon = styled(Icon.Play)`
   text-align: center;
 `;
 
-const SpeakButtonWrapper = ({ title, ...rest }) => {
+const SpeakButtonWrapper = ({ title, loading, ...rest }) => {
   return (
     <SpeakButton {...rest}>
-      <PlayIcon />
+      {loading ? <ActivityIndicator color="#fff" /> : <PlayIcon />}
     </SpeakButton>
   );
 };
