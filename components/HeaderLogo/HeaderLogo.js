@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import ImageLogo from "../../assets/icon.png";
+import ImageLogo from "../../assets/logo.png";
 import styles from "../../styles";
 
 const Wrapper = styled.View`
@@ -11,7 +11,7 @@ const Wrapper = styled.View`
 `;
 
 const Logo = styled.Image`
-  width: 22px;
+  width: 28px;
   height: 22px;
   border-radius: 5px;
 `;
