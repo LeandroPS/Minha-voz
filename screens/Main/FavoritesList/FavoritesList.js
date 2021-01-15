@@ -1,21 +1,26 @@
 import React from "react";
-import styled from "styled-components/native";
-import styles from "../../../styles";
+import { FlatList } from "react-native";
+import { useFavorites } from "../../../hooks/Favorites";
 import FavoriteItem from "./FavoriteItem";
 import NewFavorite from "./NewFavorite";
 
-const FavoritesList = styled.FlatList`
-  /* margin: ${styles["spacing-2"]} ${styles["spacing-4"]}; */
-`;
+const FavoritesList = () => {
+  const { favorites } = useFavorites();
 
-const renderItem = ({ item }) => (
-  <FavoriteItem color={item.color}>{item.text}</FavoriteItem>
-);
+  const renderItem = ({ item }) => (
+    <FavoriteItem color={item.color}>{item.text}</FavoriteItem>
+  );
 
-FavoritesList.defaultProps = {
-  renderItem,
-  keyExtractor: (item) => item.color,
-  ListFooterComponent: <NewFavorite />,
+  return (
+    <FlatList
+      renderItem={renderItem}
+      keyExtractor={(item) => item.color}
+      ListFooterComponent={<NewFavorite />}
+      nestedScrollEnabled
+      scrollEnabled={false}
+      data={favorites}
+    />
+  );
 };
 
 export default FavoritesList;

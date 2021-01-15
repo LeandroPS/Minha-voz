@@ -6,11 +6,11 @@ const Wrapper = styled.View`
   border-radius: 20px;
   background-color: ${(props) => props.color};
   margin-top: 5px;
-  padding: ${styles["spacing-3"]} ${styles["spacing-3"]};
+  padding: ${styles["spacing-3"]} ${styles["spacing-4"]};
 `;
 
 const Text = styled.Text`
-  color: #fff;
+  color: ${styles["color-text"]};
   font-size: ${styles["font-sizing-3"]};
 `;
 
