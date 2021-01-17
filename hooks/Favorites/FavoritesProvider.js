@@ -16,7 +16,7 @@ const initialValue = [
   },
 ];
 
-const FavoritesContext = createContext(initialValue);
+const FavoritesContext = createContext();
 
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(initialValue);
@@ -39,6 +39,14 @@ const FavoritesProvider = ({ children }) => {
     return styles["color-light"][newColor];
   };
 
+  const removeFavorite = (removeIndex) => {
+    const newFavoritesList = favorites.filter(
+      (_, index) => index != removeIndex
+    );
+
+    setFavorites(newFavoritesList);
+  };
+
   const addFavorite = (text) => {
     const newFavorite = {
       text,
@@ -48,7 +56,9 @@ const FavoritesProvider = ({ children }) => {
   };
 
   return (
-    <FavoritesContext.Provider value={{ favorites, addFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, addFavorite, removeFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );
