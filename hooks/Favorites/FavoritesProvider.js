@@ -1,4 +1,5 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import styles from "../../styles";
 
 const initialValue = [
@@ -20,6 +21,27 @@ const FavoritesContext = createContext();
 
 const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState(initialValue);
+
+  useEffect(() => {
+    const getFavorites = async () => {
+      const persistedFavorites = await AsyncStorage.getItem("favorites");
+      if (persistedFavorites) {
+        const parsedFavorites = JSON.parse(persistedFavorites);
+        setFavorites(parsedFavorites);
+      }
+    };
+
+    getFavorites();
+  }, []);
+
+  useEffect(() => {
+    const saveFavorites = async () => {
+      const stringfiedFavorites = JSON.stringify(favorites);
+      await AsyncStorage.setItem("favorites", stringfiedFavorites);
+    };
+
+    saveFavorites();
+  }, [favorites]);
 
   const getNewFavoriteColor = () => {
     const colors = Object.keys(styles["color-light"]);
