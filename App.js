@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import FavoritesProvider from "./hooks/Favorites";
+import SpeechProvider from "./hooks/Speech";
 import HeaderLogo from "./components/HeaderLogo";
 import Main from "./screens/Main";
 import Settings from "./screens/Settings";
@@ -22,27 +23,29 @@ const { Navigator, Screen } = createStackNavigator();
 export default function App() {
   return (
     <FavoritesProvider>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaProvider>
-        <NavigationContainer>
-          <Navigator>
-            <Screen
-              name="Main"
-              component={Main}
-              options={{
-                headerLeft: () => <HeaderLogo />,
-                headerTitle: null,
-                headerStyle: {
-                  elevation: 0,
-                  shadowOpacity: 0,
-                  borderBottomWidth: 1,
-                },
-              }}
-            />
-            <Screen name="Settings" component={Settings} />
-          </Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
+      <SpeechProvider>
+        <StatusBar barStyle="dark-content" />
+        <SafeAreaProvider>
+          <NavigationContainer>
+            <Navigator>
+              <Screen
+                name="Main"
+                component={Main}
+                options={{
+                  headerLeft: () => <HeaderLogo />,
+                  headerTitle: null,
+                  headerStyle: {
+                    elevation: 0,
+                    shadowOpacity: 0,
+                    borderBottomWidth: 1,
+                  },
+                }}
+              />
+              <Screen name="Settings" component={Settings} />
+            </Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </SpeechProvider>
     </FavoritesProvider>
   );
 }
