@@ -1,19 +1,23 @@
 import React, { useState, createContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import generateUUID from "../../utils/generateUUID";
 import styles from "../../styles";
 
 const initialValue = [
   {
     text: "Olá, tudo bem?",
     color: styles["color-light"].red,
+    id: generateUUID(),
   },
   {
     text: "Meu nome não é johnny",
     color: styles["color-light"].green,
+    id: generateUUID(),
   },
   {
     text: "Minha mãe me disse",
     color: styles["color-light"].purple,
+    id: generateUUID(),
   },
 ];
 
@@ -28,6 +32,7 @@ const FavoritesProvider = ({ children }) => {
       if (persistedFavorites) {
         const parsedFavorites = JSON.parse(persistedFavorites);
         setFavorites(parsedFavorites);
+        console.log(parsedFavorites);
       }
     };
 
@@ -61,10 +66,8 @@ const FavoritesProvider = ({ children }) => {
     return styles["color-light"][newColor];
   };
 
-  const removeFavorite = (removeIndex) => {
-    const newFavoritesList = favorites.filter(
-      (_, index) => index != removeIndex
-    );
+  const removeFavorite = (removeId) => {
+    const newFavoritesList = favorites.filter((item) => item.id != removeId);
 
     setFavorites(newFavoritesList);
   };
@@ -73,6 +76,7 @@ const FavoritesProvider = ({ children }) => {
     const newFavorite = {
       text,
       color: getNewFavoriteColor(),
+      id: generateUUID(),
     };
     setFavorites([...favorites, newFavorite]);
   };
