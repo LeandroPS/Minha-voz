@@ -1,22 +1,22 @@
 import React, { useState, createContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import colors from "material-colors";
 import generateUUID from "../../utils/generateUUID";
-import styles from "../../styles";
 
 const initialValue = [
   {
     text: "Olá, tudo bem?",
-    color: styles["color-light"].red,
+    color: "green",
     id: generateUUID(),
   },
   {
     text: "Meu nome não é johnny",
-    color: styles["color-light"].green,
+    color: "blue",
     id: generateUUID(),
   },
   {
     text: "Minha mãe me disse",
-    color: styles["color-light"].purple,
+    color: "red",
     id: generateUUID(),
   },
 ];
@@ -49,21 +49,29 @@ const FavoritesProvider = ({ children }) => {
   }, [favorites]);
 
   const getNewFavoriteColor = () => {
-    const colors = Object.keys(styles["color-light"]);
+    const colorExceptions = [
+      "black",
+      "darkIcons",
+      "darkText",
+      "grey",
+      "lightIcons",
+      "lightText",
+      "white",
+    ];
+    const colorNames = Object.keys(colors).filter(
+      (item) => !colorExceptions.includes(item)
+    );
 
-    const newColor = colors.find(
-      (color) =>
-        !favorites.some(
-          (favorite) => favorite.color === styles["color-light"][color]
-        )
+    const newColor = colorNames.find(
+      (color) => !favorites.some((favorite) => favorite.color === color)
     );
 
     if (!Boolean(newColor)) {
-      const color = colors[Math.floor(Math.random() * colors.length)];
-      return styles["color-light"][color];
+      const color = colorNames[Math.floor(Math.random() * colors.length)];
+      return color;
     }
 
-    return styles["color-light"][newColor];
+    return newColor;
   };
 
   const removeFavorite = (removeId) => {
