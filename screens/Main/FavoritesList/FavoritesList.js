@@ -7,9 +7,7 @@ import NewFavorite from "./NewFavorite";
 const FavoritesList = () => {
   const { favorites } = useFavorites();
 
-  const renderItem = ({ item }) => (
-    <FavoriteItem color={item.color}>{item.text}</FavoriteItem>
-  );
+  const renderItem = ({ item }) => <FavoriteItem {...item} />;
 
   return (
     <FlatList
