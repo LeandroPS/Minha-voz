@@ -10,13 +10,18 @@ const initialValue = [
     id: generateUUID(),
   },
   {
-    text: "Meu nome não é johnny",
+    text: "Pode me ajudar com algo?",
+    color: "red",
+    id: generateUUID(),
+  },
+  {
+    text: "Muito obrigado!",
     color: "blue",
     id: generateUUID(),
   },
   {
-    text: "Minha mãe me disse",
-    color: "red",
+    text: "Até logo!",
+    color: "purple",
     id: generateUUID(),
   },
 ];
@@ -32,10 +37,8 @@ const FavoritesProvider = ({ children }) => {
       if (persistedFavorites) {
         const parsedFavorites = JSON.parse(persistedFavorites);
         setFavorites(parsedFavorites);
-        console.log(parsedFavorites);
       }
     };
-
     getFavorites();
   }, []);
 
@@ -91,7 +94,7 @@ const FavoritesProvider = ({ children }) => {
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, addFavorite, removeFavorite }}
+      value={{ favorites, setFavorites, addFavorite, removeFavorite }}
     >
       {children}
     </FavoritesContext.Provider>
