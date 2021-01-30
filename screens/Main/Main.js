@@ -1,30 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   PanGestureHandler,
   Directions,
   State,
 } from "react-native-gesture-handler";
-import fetchAudio from "../../services/fetchAudio";
-import playBase64URIAudio from "../../utils/playBase64URIAudio";
+import { PanResponder, View } from "react-native";
+import { useSpeech } from "../../hooks/Speech";
 import Container from "../../components/Container";
 import SpeechField from "./SpeechField";
 import SpeakButton from "./SpeakButton";
 import DeleteButton from "./DeleteButton";
 import FloatingContainer from "./FloatingContainer";
+import Heading from "./Heading";
+import FavoritesList from "./FavoritesList";
+import styled from "styled-components/native";
+import styles from "../../styles";
+
+const Wrapper = styled.View`
+  padding-bottom: ${styles["spacing-6"]};
+`;
 
 const Main = () => {
   const [speech, setSpeech] = useState("");
   const [history, setHistory] = useState([]);
   const [historyPosition, setHistoryPosition] = useState(-1);
-  const [loading, setLoading] = useState(false);
+  const { speak, loading } = useSpeech();
+
+  const panResponder = useRef(
+    PanResponder.create({
+      onPanResponderMove: handlePanEvent,
+    })
+  ).current;
 
   const handleSpeech = async () => {
     if (speech === "") return;
     try {
-      setLoading(true);
-      const audio = await fetchAudio(speech);
-      setLoading(false);
-      playBase64URIAudio(audio);
+      speak(speech);
       setHistory([speech, ...history]);
       setHistoryPosition(-1);
       setSpeech("");
@@ -42,6 +53,7 @@ const Main = () => {
       }
 
       setSpeech(history[position]);
+      console.log(`seta ${history[position]}`);
       setHistoryPosition(position);
     }
   };
@@ -51,35 +63,58 @@ const Main = () => {
 
     if (Boolean(history[position])) {
       setSpeech(history[position]);
+      console.log(`seta ${history[position]}`);
       setHistoryPosition(position);
     }
   };
 
-  const handlePanEvent = ({ nativeEvent }) => {
-    console.log(history);
-    if (nativeEvent.oldState === State.ACTIVE) {
-      if (nativeEvent.translationX > 0) {
-        goForwardInHistory();
-      } else {
-        goBackInHistory();
-      }
+  // const handlePanEvent = ({ nativeEvent }) => {
+  //   if (nativeEvent.oldState === State.ACTIVE) {
+  //     console.log("foi");
+  //     if (nativeEvent.translationX > 0) {
+  //       goForwardInHistory();
+  //     } else {
+  //       goBackInHistory();
+  //     }
+  //   }
+  // };
+
+  const handlePanEvent = (event, gestureState) => {
+    console.log("foi");
+    if (gestureState.dx > 0) {
+      console.log("goforward");
+      goForwardInHistory();
+    } else {
+      console.log("goBack");
+      goBackInHistory();
     }
   };
 
   return (
-    <Container>
-      <PanGestureHandler
+    <Container
+      afterScrollView={
+        <FloatingContainer
+          center={
+            <SpeakButton loading={loading} onPress={() => handleSpeech()} />
+          }
+          right={<DeleteButton onPress={() => setSpeech("")} />}
+        />
+      }
+    >
+      <Wrapper>
+        {/* <PanGestureHandler
         direction={Directions.RIGHT | Directions.LEFT}
         onHandlerStateChange={handlePanEvent}
-      >
-        <SpeechField defaultValue={speech} onChangeText={setSpeech} />
-      </PanGestureHandler>
-      <FloatingContainer
-        center={
-          <SpeakButton loading={loading} onPress={() => handleSpeech()} />
-        }
-        right={<DeleteButton onPress={() => setSpeech("")} />}
-      />
+      > */}
+        <SpeechField
+          defaultValue={speech}
+          onChangeText={setSpeech}
+          {...panResponder.panHandlers}
+        />
+        {/* </PanGestureHandler> */}
+        <Heading>Frases Favoritas</Heading>
+        <FavoritesList />
+      </Wrapper>
     </Container>
   );
 };
