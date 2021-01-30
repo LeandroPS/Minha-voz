@@ -1,22 +1,24 @@
 import React from "react";
-import { FlatList } from "react-native";
+import DraggableFlatList from "react-native-draggable-flatlist";
 import { useFavorites } from "../../../hooks/Favorites";
 import FavoriteItem from "./FavoriteItem";
 import NewFavorite from "./NewFavorite";
 
 const FavoritesList = () => {
-  const { favorites } = useFavorites();
+  const { favorites, setFavorites } = useFavorites();
 
-  const renderItem = ({ item }) => <FavoriteItem {...item} />;
+  const renderItem = ({ item, ...props }) => (
+    <FavoriteItem {...item} {...props} />
+  );
 
   return (
-    <FlatList
+    <DraggableFlatList
       renderItem={renderItem}
-      keyExtractor={(item) => item.color}
+      keyExtractor={(item) => `draggable-item-${item.id}`}
       ListFooterComponent={<NewFavorite />}
-      nestedScrollEnabled
-      scrollEnabled={false}
       data={favorites}
+      scrollPercent={5}
+      onDragEnd={({ data }) => setFavorites(data)}
     />
   );
 };

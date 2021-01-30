@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Animated, TouchableOpacity } from "react-native";
+import { Animated, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import * as Icon from "react-native-feather";
@@ -32,7 +32,7 @@ const DeleteIcon = styled(Icon.Trash)`
   color: ${styles["color-primary"]};
 `;
 
-const FavoriteItem = ({ text, color, id }) => {
+const FavoriteItem = ({ text, color, id, drag }) => {
   const { speak } = useSpeech();
   const { removeFavorite } = useFavorites();
 
@@ -57,7 +57,7 @@ const FavoriteItem = ({ text, color, id }) => {
 
   return (
     <Swipeable renderLeftActions={leftSwipe}>
-      <Wrapper color={color} onPress={() => speak(text)}>
+      <Wrapper color={color} onPress={() => speak(text)} onLongPress={drag}>
         <Text>{text}</Text>
       </Wrapper>
     </Swipeable>
