@@ -92,9 +92,22 @@ const FavoritesProvider = ({ children }) => {
     setFavorites([...favorites, newFavorite]);
   };
 
+  const editFavorite = (id, text) => {
+    const index = favorites.findIndex((item) => item.id === id);
+    if (index === -1) return;
+    favorites[index].text === text;
+    setFavorites(favorites);
+  };
+
   return (
     <FavoritesContext.Provider
-      value={{ favorites, setFavorites, addFavorite, removeFavorite }}
+      value={{
+        favorites,
+        setFavorites,
+        addFavorite,
+        removeFavorite,
+        editFavorite,
+      }}
     >
       {children}
     </FavoritesContext.Provider>
