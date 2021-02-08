@@ -6,13 +6,13 @@ const useKeyboard = () => {
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
+      "keyboardWillShow",
       () => {
         setKeyboardVisible(true); // or some other action
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
+      "keyboardWillHide",
       () => {
         setKeyboardVisible(false); // or some other action
       }
