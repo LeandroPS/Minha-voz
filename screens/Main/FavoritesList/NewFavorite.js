@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Platform } from "react-native";
 import styled from "styled-components/native";
 import * as Icon from "react-native-feather";
 import { useFavorites } from "../../../hooks/Favorites";
@@ -11,9 +12,15 @@ const Wrapper = styled.View`
   margin-top: ${styles["spacing-2"]};
 `;
 
+const verticalPaddings = {
+  android: styles["spacing-2"],
+  ios: styles["spacing-3"],
+};
+
 const TextInput = styled.TextInput`
-  padding: ${styles["spacing-3"]} ${styles["spacing-4"]};
+  padding: ${verticalPaddings[Platform.OS]} ${styles["spacing-3"]};
   padding-right: 45px;
+
   font-size: ${styles["font-sizing-3"]};
 `;
 
