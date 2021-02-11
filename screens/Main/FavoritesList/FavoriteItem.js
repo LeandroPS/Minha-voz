@@ -32,7 +32,7 @@ const DeleteIcon = styled(Icon.Trash)`
   color: ${styles["color-primary"]};
 `;
 
-const FavoriteItem = ({ text, color, id, drag }) => {
+const FavoriteItem = ({ text, color, id }) => {
   const { speak } = useSpeech();
   const { removeFavorite } = useFavorites();
 
@@ -46,6 +46,7 @@ const FavoriteItem = ({ text, color, id, drag }) => {
       outputRange: [0, 1],
       extrapolate: "clamp",
     });
+
     return (
       <TouchableOpacity onPress={handleDelete} activeOpacity={0.6}>
         <DeleteContainer style={{ transform: [{ scale: scale }] }}>
@@ -57,7 +58,7 @@ const FavoriteItem = ({ text, color, id, drag }) => {
 
   return (
     <Swipeable renderLeftActions={leftSwipe}>
-      <Wrapper color={color} onPress={() => speak(text)} onLongPress={drag}>
+      <Wrapper color={color} onPress={() => speak(text)}>
         <Text>{text}</Text>
       </Wrapper>
     </Swipeable>
