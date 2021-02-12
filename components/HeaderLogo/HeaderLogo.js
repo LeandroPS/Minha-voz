@@ -26,7 +26,7 @@ const Text = styled.Text`
 const HeaderLogo = () => {
   return (
     <Wrapper>
-      <Logo source={ImageLogo} />
+      <Logo resizeMode={"contain"} source={ImageLogo} />
       <Text>Minha voz</Text>
     </Wrapper>
   );
