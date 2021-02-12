@@ -9,7 +9,7 @@ const DeleteButton = styled.TouchableOpacity`
 `;
 
 const DeleteIcon = styled(Icon.Delete)`
-  color: ${styles["color-text"]};
+  color: ${styles["color-secondary-button"]};
 `;
 
 const DeleteButtonWrapper = (props) => {
