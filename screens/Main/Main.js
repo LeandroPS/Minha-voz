@@ -17,7 +17,7 @@ import styled from "styled-components/native";
 import styles from "../../styles";
 
 const Wrapper = styled.View`
-  padding-bottom: ${styles["spacing-6"]};
+  padding-bottom: 100px;
 `;
 
 const Main = () => {
