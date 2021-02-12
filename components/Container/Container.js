@@ -1,7 +1,7 @@
 import React from "react";
 import { Platform, View } from "react-native";
 import { useHeaderHeight } from "@react-navigation/stack";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import styles from "../../styles";
 
@@ -10,28 +10,26 @@ const KeyboardAvoidingView = styled.KeyboardAvoidingView`
   background-color: ${styles["color-background"]};
 `;
 
-const StyledSafeAreaView = styled(SafeAreaView)`
-  flex: 1;
-`;
-
-const ScrollView = styled.ScrollView`
+const SafeArea = styled.ScrollView`
   flex: 1;
   padding: 0 ${styles["spacing-4"]};
 `;
 
-const Container = ({ children, afterScrollView, ...props }) => (
-  <KeyboardAvoidingView
-    keyboardVerticalOffset={useHeaderHeight()}
-    behavior={Platform.OS == "ios" ? "padding" : "height"}
-    {...props}
-  >
-    <StyledSafeAreaView edges={["top", "bottom"]} bottom={20}>
-      <View style={{ flex: 1 }}>
-        <ScrollView>{children}</ScrollView>
+const Container = ({ children, afterScrollView, ...props }) => {
+  const insets = useSafeAreaInsets();
+
+  return (
+    <KeyboardAvoidingView
+      keyboardVerticalOffset={useHeaderHeight()}
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+      {...props}
+    >
+      <View style={{ flex: 1, paddingBottom: insets.bottom }}>
+        <SafeArea>{children}</SafeArea>
+        {afterScrollView}
       </View>
-      {afterScrollView}
-    </StyledSafeAreaView>
-  </KeyboardAvoidingView>
-);
+    </KeyboardAvoidingView>
+  );
+};
 
 export default Container;
