@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   PanGestureHandler,
   Directions,
@@ -7,6 +7,11 @@ import {
 import { PanResponder, View } from "react-native";
 import { useSpeech } from "../../hooks/Speech";
 import Container from "../../components/Container";
+import {
+  HeaderLogo,
+  HeaderButton,
+  HeaderButtonContainer,
+} from "../../components/Header";
 import SpeechField from "./SpeechField";
 import SpeakButton from "./SpeakButton";
 import DeleteButton from "./DeleteButton";
@@ -14,17 +19,30 @@ import FloatingContainer from "./FloatingContainer";
 import Heading from "./Heading";
 import FavoritesList from "./FavoritesList";
 import styled from "styled-components/native";
-import styles from "../../styles";
 
 const Wrapper = styled.View`
   padding-bottom: 100px;
 `;
 
-const Main = () => {
+const Main = ({ navigation }) => {
   const [speech, setSpeech] = useState("");
   const [history, setHistory] = useState([]);
   const [historyPosition, setHistoryPosition] = useState(-1);
   const { speak, loading } = useSpeech();
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => <HeaderLogo />,
+      headerRight: () => (
+        <HeaderButtonContainer>
+          <HeaderButton
+            icon="Sliders"
+            onPress={() => navigation.navigate("Settings")}
+          />
+        </HeaderButtonContainer>
+      ),
+    });
+  }, []);
 
   const panResponder = useRef(
     PanResponder.create({
