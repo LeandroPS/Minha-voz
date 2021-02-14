@@ -6,7 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import FavoritesProvider from "./hooks/Favorites";
 import SpeechProvider from "./hooks/Speech";
-import HeaderLogo from "./components/HeaderLogo";
 import Main from "./screens/Main";
 import Settings from "./screens/Settings";
 
@@ -27,20 +26,17 @@ export default function App() {
         <StatusBar barStyle="dark-content" />
         <SafeAreaProvider>
           <NavigationContainer>
-            <Navigator>
-              <Screen
-                name="Main"
-                component={Main}
-                options={{
-                  headerLeft: () => <HeaderLogo />,
-                  headerTitle: null,
-                  headerStyle: {
-                    elevation: 0,
-                    shadowOpacity: 0,
-                    borderBottomWidth: 1,
-                  },
-                }}
-              />
+            <Navigator
+              screenOptions={{
+                headerTitle: null,
+                headerStyle: {
+                  elevation: 0,
+                  shadowOpacity: 0,
+                  borderBottomWidth: 1,
+                },
+              }}
+            >
+              <Screen name="Main" component={Main} />
               <Screen name="Settings" component={Settings} />
             </Navigator>
           </NavigationContainer>
