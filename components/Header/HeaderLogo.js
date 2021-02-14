@@ -4,10 +4,16 @@ import ImageLogo from "../../assets/logo.png";
 import styles from "../../styles";
 
 const Wrapper = styled.View`
-  flex: 1;
+  width: 100%;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   padding: 0 ${styles["spacing-4"]};
+`;
+
+const LogoWrapper = styled.View`
+  flex: 1;
+  flex-direction: row;
 `;
 
 const Logo = styled.Image`
@@ -23,13 +29,16 @@ const Text = styled.Text`
   margin-left: 8px;
 `;
 
-const HeaderLogo = () => {
+const Header = ({ right }) => {
   return (
     <Wrapper>
-      <Logo resizeMode={"contain"} source={ImageLogo} />
-      <Text>Minha voz</Text>
+      <LogoWrapper>
+        <Logo resizeMode={"contain"} source={ImageLogo} />
+        <Text>Minha voz</Text>
+      </LogoWrapper>
+      {right}
     </Wrapper>
   );
 };
 
-export default HeaderLogo;
+export default Header;
