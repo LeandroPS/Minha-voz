@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "286592878561",
+    "project_id": "minha-voz-61992",
+    "storage_bucket": "minha-voz-61992.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286592878561:android:97db7fd6ee269f4496b4a0",
+        "android_client_info": {
+          "package_name": "me.leandrops.myvoice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286592878561-ffrttt5qikkpmuj864lqrud5ag78sc08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABbNU2QR_GK1eMOKz03fKUPv7mrUC_Jtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286592878561-ffrttt5qikkpmuj864lqrud5ag78sc08.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

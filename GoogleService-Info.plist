@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>286592878561-3044mf5mejcte1nst0c8be9koec6apqt.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.286592878561-3044mf5mejcte1nst0c8be9koec6apqt</string>
+	<key>API_KEY</key>
+	<string>AIzaSyATRN7bbVD7HCnKgzgGnHAL1dOnvAyaoDQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>286592878561</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>me.leandrops.myvoice</string>
+	<key>PROJECT_ID</key>
+	<string>minha-voz-61992</string>
+	<key>STORAGE_BUCKET</key>
+	<string>minha-voz-61992.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:286592878561:ios:f173273ab5dc39e996b4a0</string>
+</dict>
+</plist>
