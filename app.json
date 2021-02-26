@@ -17,16 +17,33 @@
       "**/*"
     ],
     "ios": {
+      "ios": {
+        "bundleIdentifier": "me.leandrops.myvoice",
+        "googleServicesFile": "./GoogleService-Info.plist"
+      },
       "supportsTablet": true
     },
     "android": {
+      "package": "me.leandrops.myvoice",
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/icon.png"
+      "favicon": "./assets/icon.png",
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyA0H-_9LgYwsWl1bdzkI8R9fS0VM0A6Rak",
+          "authDomain": "minha-voz-61992.firebaseapp.com",
+          "projectId": "minha-voz-61992",
+          "storageBucket": "minha-voz-61992.appspot.com",
+          "messagingSenderId": "286592878561",
+          "appId": "1:286592878561:web:c425a503b75c372096b4a0",
+          "measurementId": "G-PMQRKQ4M81"
+        }
+      }
     }
   }
 }
