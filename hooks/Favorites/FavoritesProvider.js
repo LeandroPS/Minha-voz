@@ -2,6 +2,7 @@ import React, { useState, createContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import colors from "material-colors";
 import generateUUID from "../../utils/generateUUID";
+import * as Analytics from "expo-firebase-analytics";
 
 const initialValue = [
   {
@@ -83,12 +84,17 @@ const FavoritesProvider = ({ children }) => {
     setFavorites(newFavoritesList);
   };
 
-  const addFavorite = (text) => {
+  const addFavorite = async (text) => {
     const newFavorite = {
       text,
       color: getNewFavoriteColor(),
       id: generateUUID(),
     };
+
+    await Analytics.logEvent("favoriteAdded", {
+      length: text.length,
+    });
+
     setFavorites([...favorites, newFavorite]);
   };
 

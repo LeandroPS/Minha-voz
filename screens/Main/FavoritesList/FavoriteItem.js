@@ -40,6 +40,14 @@ const FavoriteItem = ({ text, color, id }) => {
     removeFavorite(id);
   };
 
+  const handlePress = async (text) => {
+    speak(text);
+
+    await Analytics.logEvent("favoritePlayed", {
+      length: text.length,
+    });
+  };
+
   const leftSwipe = (_, dragX) => {
     const scale = dragX.interpolate({
       inputRange: [0, 100],
@@ -58,7 +66,7 @@ const FavoriteItem = ({ text, color, id }) => {
 
   return (
     <Swipeable renderLeftActions={leftSwipe}>
-      <Wrapper color={color} onPress={() => speak(text)}>
+      <Wrapper color={color} onPress={() => handlePress(text)}>
         <Text>{text}</Text>
       </Wrapper>
     </Swipeable>
