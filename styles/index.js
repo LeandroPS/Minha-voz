@@ -1,3 +1,5 @@
+import colors from "material-colors";
+
 export default {
   "spacing-1": "4px",
   "spacing-2": "8px",
@@ -11,10 +13,10 @@ export default {
   "font-sizing-4": "20px",
   "font-sizing-5": "24px",
   "font-sizing-6": "28px",
-  "color-text": "#424242",
-  "color-white": "#FFFFFF",
-  "color-primary": "#EF5350",
-  "color-background": "#F5F5F5",
-  "color-placeholder": "#BDBDBD",
-  "color-secondary-button": "#757575",
+  "color-text": colors["grey"]["800"],
+  "color-white": colors["white"],
+  "color-primary": colors["red"]["400"],
+  "color-background": colors["grey"]["100"],
+  "color-placeholder": colors["grey"]["400"],
+  "color-secondary-button": colors["grey"]["600"],
 };
