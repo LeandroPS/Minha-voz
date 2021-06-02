@@ -5,6 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import FavoritesProvider from "./hooks/Favorites";
+import SettingsProvider from "./hooks/Settings";
 import SpeechProvider from "./hooks/Speech";
 import Main from "./screens/Main";
 import Settings from "./screens/Settings";
@@ -21,27 +22,31 @@ const { Navigator, Screen } = createStackNavigator();
 
 export default function App() {
   return (
-    <FavoritesProvider>
-      <SpeechProvider>
-        <StatusBar barStyle="dark-content" />
-        <SafeAreaProvider>
-          <NavigationContainer>
-            <Navigator
-              screenOptions={{
-                headerTitle: null,
-                headerStyle: {
-                  elevation: 0,
-                  shadowOpacity: 0,
-                  borderBottomWidth: 1,
-                },
-              }}
-            >
-              <Screen name="Main" component={Main} />
-              <Screen name="Settings" component={Settings} />
-            </Navigator>
-          </NavigationContainer>
-        </SafeAreaProvider>
-      </SpeechProvider>
-    </FavoritesProvider>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <FavoritesProvider>
+        <SpeechProvider>
+          <SettingsProvider>
+            <SafeAreaProvider>
+              <NavigationContainer>
+                <Navigator
+                  screenOptions={{
+                    headerTitle: null,
+                    headerStyle: {
+                      elevation: 0,
+                      shadowOpacity: 0,
+                      borderBottomWidth: 1,
+                    },
+                  }}
+                >
+                  <Screen name="Main" component={Main} />
+                  <Screen name="Settings" component={Settings} />
+                </Navigator>
+              </NavigationContainer>
+            </SafeAreaProvider>
+          </SettingsProvider>
+        </SpeechProvider>
+      </FavoritesProvider>
+    </>
   );
 }
