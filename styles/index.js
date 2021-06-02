@@ -11,6 +11,7 @@ export default {
   "font-sizing-4": "20px",
   "font-sizing-5": "24px",
   "font-sizing-6": "28px",
+  "font-sizing-7": "32px",
   "color-text": "#424242",
   "color-white": "#FFFFFF",
   "color-primary": "#EF5350",
