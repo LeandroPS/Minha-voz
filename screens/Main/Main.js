@@ -13,6 +13,7 @@ import DeleteButton from "./DeleteButton";
 import FloatingContainer from "./FloatingContainer";
 import Heading from "./Heading";
 import FavoritesList from "./FavoritesList";
+import Alert from "./Alert";
 import styled from "styled-components/native";
 import styles from "../../styles";
 
@@ -24,7 +25,7 @@ const Main = () => {
   const [speech, setSpeech] = useState("");
   const [history, setHistory] = useState([]);
   const [historyPosition, setHistoryPosition] = useState(-1);
-  const { speak, loading } = useSpeech();
+  const { speak, loading, error } = useSpeech();
 
   const panResponder = useRef(
     PanResponder.create({
@@ -94,6 +95,7 @@ const Main = () => {
     <Container
       afterScrollView={
         <FloatingContainer
+          top={error && <Alert text="Houve um problema ao obter audio" />}
           center={
             <SpeakButton loading={loading} onPress={() => handleSpeech()} />
           }
